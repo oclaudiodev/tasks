@@ -1,7 +1,9 @@
 import express from 'express'
 import { rotas } from './rotas.js';
+import cors from 'cors'
 
 const api = express()
+api.use(cors())
 api.use(express.json())
 
 rotas(api)

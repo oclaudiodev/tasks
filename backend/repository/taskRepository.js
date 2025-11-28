@@ -9,27 +9,26 @@ export async function consultarTasks(){
     return registro;
 }
 
-export async function inserirTask(task){
+export async function inserirTask(novaTask){
     const comando = `
-    insert into task (taskName, taskStatus, descritionTask)
-    values (?, ?, ?)
+    insert into task (taskName, descritionTask)
+    values (?, ?)
     `
 
-    const [registro] = await connection.query(comando,[task.taskName, task.taskStatus, task.descritionTask]);
+    const [registro] = await connection.query(comando,[novaTask.nome,  novaTask.descricao]);
     return registro.insertId;
 }
 
-export async function atualizarTask(taskId,task){
+export async function atualizarTask(taskId,novaTask){
     const comando = 
     `
         update task
         set taskName = ?,
-            taskStatus = ?,
             descritionTask = ?
             where taskId=?
             `
 
-            const [registro] = await connection.query(comando,[task.taskName, task.taskStatus, task.descritionTask, taskId]);
+            const [registro] = await connection.query(comando,[novaTask.nome,  novaTask.descricao, taskId]);
             return registro.affectedRows;
 
 }
