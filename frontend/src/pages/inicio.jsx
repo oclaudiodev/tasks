@@ -56,7 +56,7 @@ export default function Task(){
     async function deletar(taskId){
         try{
             await api.delete(`/deletartask/${taskId}`)
-            alert("Task Deletada!")
+            alert("Task Deletada! Agora atualize a página!")
         }catch(err){
             console.error(err);
             alert("Erro ao deletar.");
