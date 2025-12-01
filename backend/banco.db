@@ -1,0 +1,8 @@
+create database todolist;
+use todolist;
+
+create table task(
+taskId int primary key auto_increment,
+taskName varchar(100) not null,
+descritionTask varchar(600)
+);
